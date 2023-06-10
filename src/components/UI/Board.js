@@ -4,10 +4,13 @@ import calculateWinner from '../Utils/CalculateWinner';
 
 export default function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
-  const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : '0'}`;
-
-  console.log(status);
-  const isMatchNull = squares.every((square) => square !== null && winner === null);
+  
+  const statusWinner = () => {
+    if (!squares.every((square) => square !== null && winner === null)) {
+      return winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : '0'}`;   
+    }
+    return `Match null`;
+  };
 
   const handleClick = (i) => {
     if (winner || squares[i]) {
@@ -25,12 +28,10 @@ export default function Board({ xIsNext, squares, onPlay }) {
 
   return (
     <>
-      <div className="status">{!isMatchNull && ( 
-        <p>{status}</p>
-      )}</div>
-      <div className="matchNull">{isMatchNull && ( 
-        <p>Match null</p>
-      )}</div>
+      <div className="status">
+        <p>{statusWinner()}</p>
+      </div>
+
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}
