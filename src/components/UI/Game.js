@@ -1,37 +1,37 @@
 import React, { useState } from 'react';
-// import './App.scss';
-import Board from './Board';
+import Board from './board';
 
 export default function Game() {
-  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [historyGame, setHistoryGame] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
-
-
-
+  // if the number of the current move is even, the next player is X, otherwise, the next player is O
   const xIsNext = currentMove % 2 === 0;
-  const currentSquares = history[currentMove];
+  // get the current squares
+  const currentSquares = historyGame[currentMove];
 
-const handlePlay = (nextSquares) => {
-  const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
-  setHistory(nextHistory);
-  setCurrentMove(nextHistory.length - 1);
+// update the history of the game with the new squares
+const updateHistoryGame  = (nextSquares) => {
+  const updatedHistory  = [...historyGame.slice(0, currentMove + 1), nextSquares];
+  // update the history of the game
+  setHistoryGame(updatedHistory);
+  // update the current move
+  setCurrentMove(updatedHistory.length - 1);
 };
 
-
-
-
-
+// restart the game
 const restartGame = (e) => {
     e.preventDefault();
-    setHistory([Array(9).fill(null)]);
+    // update the history of the game with empty squares
+    setHistoryGame([Array(9).fill(null)]);
+    // update the current move
     setCurrentMove(0);
 }
   return (
-    <div className="game">
+    <div className="game" data-testid="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board xIsNext={xIsNext} squares={currentSquares} onUpdateHistoryGame={updateHistoryGame} />
       </div>
-      <button onClick={(e) => restartGame(e)} className='btn'>Restart</button>
+      <button onClick={(e) => restartGame(e)} className='btn' data-testid="restart">Restart</button>
     </div>
   );
 }

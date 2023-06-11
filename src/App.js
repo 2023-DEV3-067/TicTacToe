@@ -1,5 +1,5 @@
 import './App.scss';
-import Game from './components/UI/Game';
+import Game from './components/UI/game';
 
 function App() {
   return (
