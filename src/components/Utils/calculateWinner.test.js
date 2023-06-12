@@ -1,4 +1,4 @@
-import calculateWinner from './calculateWinner';
+import calculateWinner from './CalculateWinner';
 
 describe('calculateWinner function', () => {
   test('returns X as the winner (case 1)', () => {

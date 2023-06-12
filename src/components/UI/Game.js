@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Board from './board';
+import Board from './Board';
 
 export default function Game() {
   const [historyGame, setHistoryGame] = useState([Array(9).fill(null)]);

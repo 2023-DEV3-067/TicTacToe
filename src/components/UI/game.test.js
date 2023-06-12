@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen} from '@testing-library/react';
-import Game from './game';
+import Game from './Game';
 
 describe('Game component', () => {
     test('render a Game component', () => {

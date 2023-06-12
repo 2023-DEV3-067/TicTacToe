@@ -1,6 +1,6 @@
 import React from 'react';
-import Square from './square';
-import calculateWinner from '../Utils/calculateWinner';
+import Square from './Square';
+import calculateWinner from '../Utils/CalculateWinner';
 
 export default function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
