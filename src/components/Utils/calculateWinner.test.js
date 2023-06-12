@@ -1,7 +1,6 @@
 import calculateWinner from './calculateWinner';
 
 describe('calculateWinner function', () => {
-
   test('returns X as the winner (case 1)', () => {
     const squares = ['X', 'X', 'X', 'O', null, 'O', null, null, null];
     const winner = calculateWinner(squares);

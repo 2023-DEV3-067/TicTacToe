@@ -4,7 +4,7 @@ import Square from './square';
 
 describe('Board component', () => {
   test('renders a Square component', () => {
-    render(<Square value="" onClick={() => {}} />);
+    render(<Square />);
     expect(screen.getByTestId('square')).toBeInTheDocument();
   });
 });

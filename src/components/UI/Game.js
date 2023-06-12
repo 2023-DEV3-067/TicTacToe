@@ -21,15 +21,13 @@ const updateHistoryGame  = (nextSquares) => {
 // restart the game
 const restartGame = (e) => {
     e.preventDefault();
-    // update the history of the game with empty squares
     setHistoryGame([Array(9).fill(null)]);
-    // update the current move
     setCurrentMove(0);
 }
   return (
     <div className="game" data-testid="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onUpdateHistoryGame={updateHistoryGame} />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={updateHistoryGame} />
       </div>
       <button onClick={(e) => restartGame(e)} className='btn' data-testid="restart">Restart</button>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import Square from './square';
 import calculateWinner from '../Utils/calculateWinner';
 
-export default function Board({ xIsNext, squares, onUpdateHistoryGame }) {
+export default function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
 
   function getStatusPlayer() {
@@ -14,15 +14,12 @@ export default function Board({ xIsNext, squares, onUpdateHistoryGame }) {
   }
 
   function handleClick(i) {
-    // if i click on a square that is already filled or if there is a winner, return
-    if (winner || squares[i]) {
-      return;
-    }
-
     // create a copy of the squares array and update the value of the square that was clicked
-    const nextSquares = squares.slice();
-    nextSquares[i] = xIsNext ? 'X' : 'O';
-    onUpdateHistoryGame(nextSquares);
+    if ((winner || squares[i]) === null){
+      const nextSquares = squares.slice();
+      nextSquares[i] = xIsNext ? 'X' : 'O';
+      onPlay(nextSquares);
+    }   
   }
 
   return (
